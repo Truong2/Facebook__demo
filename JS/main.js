@@ -148,7 +148,7 @@ const apps = {
     ],
     list_story5: [
         './assets/img/Dung.jpg',
-        './assets/img/Thảo1.jpg',
+        './assets/img/Thao1.jpg',
         './assets/img/Thuy1.jpg',
         './assets/img/ngoc1.jpg',
         './assets/img/oanh.PNG',
@@ -320,6 +320,7 @@ const apps = {
         }
        //
        let dem = 0;
+       let count1 = 0;
        const user_img = $('.user-img');
        const img = $('.js-user-story');
        const img1 = $('.js-user-story-1');
@@ -331,7 +332,6 @@ const apps = {
         if(dem > _this.list_story1.length - 1){
             dem = 0;
         }
-        user_img.src = _this.list_story5[dem];
         img.src = _this.list_story[dem];
         img1.src = _this.list_story1[dem];
         img2.src = _this.list_story2[dem];
@@ -341,6 +341,17 @@ const apps = {
        setInterval(function(){
         btnNext.click();
     },5000);
+    const btn = $('.container-center-story-icon-1');
+    btn.onclick = function(){
+        count1++;
+            if(count1 > _this.list_story5.length ){
+                count1 = 0;
+            }
+            user_img.src = _this.list_story5[count1];
+    }
+        setInterval(function(){
+            btn.click();
+        },8000);
     },
     showValue: function(input){
         input__blog.onkeydown = function(e){
