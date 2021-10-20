@@ -1219,18 +1219,18 @@
 .container-center-list-story__user:hover .container-center-list-story__user-name{
     background-color: rgba(130, 131, 133,0.1);
 }
-.container-center-list-story__user-img-name:hover {
+.img-story-name:hover {
     transform: scale(102%);
     cursor: pointer;
 }
-.container-center-list-story__user-img-name{
+.img-story-name{
     object-fit:cover;
     width: 100%;
     height: 149px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.container-center-list-story__user-img-name--user{
+.img-story-name--user{
     height: 199px;
     border-radius: 10px;
     object-fit:cover;
@@ -2016,5 +2016,9 @@ i.down{
 }
 .slider{
     display: flex;
-    padding-left: 100px;
+    width: 100%;
+}
+.slider-review{
+    display: flex;
+    transition: transform linear 0.4s;
 }

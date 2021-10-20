@@ -30,7 +30,7 @@ const Account = $('.js-account');
 const iconAcc = $('.js-icon-account');
 const list_contact = $('.container-right-brand-list');
 const container_right = $('.container-right');
-const list_story = $('.slider');
+const list_story = $('.slider-review');
 const btnNext = $('.js-next-story');
 const itemStory = $('.js-item-story');
 const likebtn = $$('.js-like-status');
@@ -111,33 +111,25 @@ const apps = {
             place: 'Hà Tĩnh'
         },
     ],
-    list_story: [
-
-        {
-            user_name: 'Lê Quang Phong',
-            img_user: './assets/img/user-9.jpg',
-            img_story: './assets/img/user-11.jpg',
-        },
-        {
-            user_name: 'Em',
-            img_user: './assets/img/user2.jpg',
-            img_story: './assets/img/user5.jpg',
-        },
-        {
-            user_name: 'Quên Tên',
-            img_user: './assets/img/user-11.jpg',
-            img_story: './assets/img/user.jpg',
-        },
-        {
-            user_name: 'Nguyễn Trường',
-            img_user: './assets/img/user.jpg',
-            img_story: './assets/img/user2.jpg',
-        },
-        {
-            user_name: 'Người ấy là ai',
-            img_user: './assets/img/user-13.jpg',
-            img_story: './assets/img/user3.jpg',
-        },
+    list_story1: [
+        './assets/img/user-story-1.jpg',
+        './assets/img/user-story-2.jpg',
+        './assets/img/user-story-3.jpg',
+    ],
+    list_story2: [
+        './assets/img/user-story2-1.jpg',
+        './assets/img/user-story2-2.jpg',
+        './assets/img/user-story2-3.jpg',
+    ],
+    list_story3: [
+        './assets/img/user-story3-1.jpg',
+        './assets/img/user-story3-2.jpg',
+        './assets/img/user-story3-3.jpg',
+    ],
+    list_story4: [
+        './assets/img/user-story4-1.jpg',
+        './assets/img/user-story4-2.jpg',
+        './assets/img/user-story4-2.jpg',
     ],
     renderListContact: function(){
         const length = this.contact_list.length;
@@ -193,28 +185,6 @@ const apps = {
             `
         })
         list_contact.innerHTML = htmls.join('');
-    },
-    renderListStory: function(){
-       const htmls = this.list_story.map(function(item,index){
-            return `
-            <div class="col no-gutters ${index>3?'l-0':'l-3'} m-2-4 c-3">
-                <div class="container-centenr-list-story ">
-                    <div class="container-center-list-story__user  ">
-                        <div class="container-center-list-story__user-img ">
-                            <img class="container-center-list-story__user-img-name container-center-list-story__user-img-name--user "  src="${item.img_story}" alt="">
-                        </div>
-                        <div class="container-center-list-story__user-name container-center-list-story__user-name--user ">
-                            <div class="user-name user-name--while-color">${item.user_name}</div>
-                        </div>
-                        <div class="container-center-list-story__user-user">
-                            <img src="${item.img_user}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>                                         
-            `
-        })
-        list_story.innerHTML = htmls.join('');
     },
     CreatElemt: function(){
 
@@ -301,10 +271,8 @@ const apps = {
             item.onclick = function(){
                 this.classList.toggle('active');
                 const check = this.classList.contains('active');
-                const par = this.parentNode;
-                const par1 = par.parentNode;
-                const par2 = par1.parentNode;
-                const par3 = par2.querySelector('.number-like');
+                const par = this.parentNode.parentNode.parentNode;
+                const par3 = par.querySelector('.number-like');
                 console.log(par3);
                 const numberLike = Number(par3.textContent) ;
                 if(check){
@@ -328,7 +296,25 @@ const apps = {
            input__blog.focus();
               
         }
-       
+       //
+       let dem = 0;
+       const img1 = $('.js-user-story-1');
+       const img2 = $('.js-user-story-2');
+       const img3 = $('.js-user-story-3');
+       const img4 = $('.js-user-story-4');
+       btnNext.onclick = function(){
+        dem++;
+        if(dem > _this.list_story1.length - 1){
+            dem = 0;
+        }
+        img1.src = _this.list_story1[dem];
+        img2.src = _this.list_story2[dem];
+        img3.src = _this.list_story3[dem];
+        img4.src = _this.list_story4[dem];
+       }
+       setInterval(function(){
+        btnNext.click();
+    },5000);
     },
     showValue: function(input){
         input__blog.onkeydown = function(e){
@@ -441,7 +427,6 @@ const apps = {
     start: function(){
         this.handleEvent();
         this.renderListContact();
-        this.renderListStory();
     }
 }
 apps.start();
