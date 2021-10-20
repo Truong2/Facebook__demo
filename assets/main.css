@@ -1561,6 +1561,10 @@
     height: 32px;
     border-radius: 50%;
 }
+.comment-content__body-img img{
+    width: 50%;
+    height: 50%;
+}
 .comment-block__header-user::before{
     content: "";
     position: absolute;

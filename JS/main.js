@@ -111,25 +111,47 @@ const apps = {
             place: 'Hà Tĩnh'
         },
     ],
+    list_story: [
+        './assets/img/Dung.jpg',
+        './assets/img/Dung1.jpg',
+        './assets/img/Dung2.jpg',
+        './assets/img/user-10.jpg',
+        './assets/img/hoa1.jpg',
+    ],
     list_story1: [
-        './assets/img/user-story-1.jpg',
-        './assets/img/user-story-2.jpg',
-        './assets/img/user-story-3.jpg',
+        './assets/img/Thảo.jpg',
+        './assets/img/Thao1.jpg',
+        './assets/img/Thao2.jpg',
+        './assets/img/user-6.jpg',
+        './assets/img/hoa2.jpg',
     ],
     list_story2: [
-        './assets/img/user-story2-1.jpg',
-        './assets/img/user-story2-2.jpg',
-        './assets/img/user-story2-3.jpg',
+        './assets/img/Thuy.jpg',
+        './assets/img/Thuy1.jpg',
+        './assets/img/Thuy2.jpg',
+        './assets/img/Thùy-user.jpg',
+        './assets/img/hoa3.jpg',
     ],
     list_story3: [
-        './assets/img/user-story3-1.jpg',
-        './assets/img/user-story3-2.jpg',
-        './assets/img/user-story3-3.jpg',
+        './assets/img/oanh.PNG',
+        './assets/img/oanh1.jpg',
+        './assets/img/oanh and thao.jpg',
+        './assets/img/oanh-user.jpg',
+        './assets/img/hoa4.jpg',
     ],
     list_story4: [
-        './assets/img/user-story4-1.jpg',
-        './assets/img/user-story4-2.jpg',
-        './assets/img/user-story4-2.jpg',
+        './assets/img/ngoc.jpg',
+        './assets/img/ngoc1.jpg',
+        './assets/img/ngoc2.jpg',
+        './assets/img/ngoc-user.jpg',
+        './assets/img/hoa5.jpg',
+    ],
+    list_story5: [
+        './assets/img/Dung.jpg',
+        './assets/img/Thảo1.jpg',
+        './assets/img/Thuy1.jpg',
+        './assets/img/ngoc1.jpg',
+        './assets/img/oanh.PNG',
     ],
     renderListContact: function(){
         const length = this.contact_list.length;
@@ -298,6 +320,8 @@ const apps = {
         }
        //
        let dem = 0;
+       const user_img = $('.user-img');
+       const img = $('.js-user-story');
        const img1 = $('.js-user-story-1');
        const img2 = $('.js-user-story-2');
        const img3 = $('.js-user-story-3');
@@ -307,6 +331,8 @@ const apps = {
         if(dem > _this.list_story1.length - 1){
             dem = 0;
         }
+        user_img.src = _this.list_story5[dem];
+        img.src = _this.list_story[dem];
         img1.src = _this.list_story1[dem];
         img2.src = _this.list_story2[dem];
         img3.src = _this.list_story3[dem];
