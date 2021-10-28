@@ -320,8 +320,6 @@ const apps = {
         }
        //
        let dem = 0;
-       let count1 = 0;
-       const user_img = $('.user-img');
        const img = $('.js-user-story');
        const img1 = $('.js-user-story-1');
        const img2 = $('.js-user-story-2');
@@ -341,18 +339,7 @@ const apps = {
        setInterval(function(){
         btnNext.click();
     },5000);
-    const btn = $('.container-center-story-icon-1');
-    btn.onclick = function(){
-        count1++;
-            if(count1 > _this.list_story5.length ){
-                count1 = 0;
-            }
-            user_img.src = _this.list_story5[count1];
-    }
-        setInterval(function(){
-            btn.click();
-        },8000);
-    },
+       },
     showValue: function(input){
         input__blog.onkeydown = function(e){
             switch(e.which){
@@ -389,10 +376,10 @@ const apps = {
             }
         }
     },
+   
     ShowPostBlog: function(input){
         const submitblog = $('.btn-sumbit-status');
         submitblog.onclick = function(){
-            const check = false;
             const blog = $('.center-content-blog');
             const blogitem = document.createElement('div');
             blogitem.innerHTML = `
@@ -435,7 +422,7 @@ const apps = {
                  </div>
                  <div class="center-content-blog__footer">
                      <div class='icon-comment'>
-                         <div onclick="this.classList.toggle('active')" class="center-content-blog__footer-icon-like js-like-status hover">
+                         <div onclick="handleLike()" class="center-content-blog__footer-icon-like js-like-status hover">
                              <span class="icon-like">
                                  <i class="far fa-thumbs-up"></i>
                              </span>
@@ -467,6 +454,9 @@ const apps = {
     }
 }
 apps.start();
+function handleLike() {
+    return  `class = 'active' `;
+ }
 // footer
 const footer_messenger_notification = $('.footer-messenger-notification');
 function messenger_notification({

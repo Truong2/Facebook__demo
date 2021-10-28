@@ -758,7 +758,7 @@
 /* Container */
 .container{
     margin-top: 56px;
-    overflow-y: hidden;
+    overflow: hidden;
     background-color: var(--primary-color);
 }
 .container-left{
