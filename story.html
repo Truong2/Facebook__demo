@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <link rel="icon" href="./assets/img/facebook.png">
+    <link rel="stylesheet" href="./assets/storycss/base.css">
+    <link rel="stylesheet" href="./assets/storycss/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="app">
+        <div class="app-left">
+            <header>
+                <a href="./index.html" class="close-app">
+                    <i class="fas fa-times"></i>
+                </a>
+                <div class="logo">
+                    <img src="./media/img/facebook.png" alt="">
+                </div>
+            </header>
+            <div class="block"></div>
+            <div class="container">
+                <div class="heading">
+                    <h1>Tin</h1>
+                    <span class="setting">
+                        <a href="">Kho lưu trữ</a>
+                        <div class="heading-square"></div>
+                        <a href="">Cài đặt</a>
+                    </span>
+                    <span class="heading-icon">
+                        <i class="far fa-caret-square-left"></i>
+                    </span>
+                </div>
+                <div class="story">
+                    <div class="story-header">Tin của bạn</div>
+                    <div class="story-item">
+                        <div class="story-user__master">
+                            <img class="story-user-img active"src="./media/img/user.jpg" alt="">
+                            <div class="user-info-master">
+                                <div class="user">Trường Nguyễn</div>
+                                <div class="time">23 giờ</div>
+                            </div>
+                        </div>
+                        <span class="add-story">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </div>
+                    <div class="list-story-header">Tất cả tin</div>
+                    <div class="list-story-user">
+                       
+                    </div>
+                    </div>
+                </div>
+        </div>
+        <div class="app-center">
+            <audio id="audio" src=""></audio>
+            <span class="btn btn-pre">
+                <i class=" fas fa-chevron-left"></i>
+            </span>
+            <div class="story-active">
+                <div class="story-control">
+                    <div class="run-time-story">
+                        <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+                        <div class="run-time"></div>
+                    </div>
+                    <div class="btn-control">
+                        <div class="btn-run btn-toggle-play">
+                            <i class="fas fa-pause icon-pause"></i>
+                            <i class="fas fa-play icon-play"></i>
+                        </div>
+                        <div class="btn-volume ">
+                            <i class="icon-volume fas fa-volume-up"></i>
+                            <i class="icon-mute fas fa-volume-mute"></i>
+                            <i class="icon-more fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="story-active-user">
+                        <img class='story-active-img' src="./media/img/user3.jpg" alt="">
+                        <div class="story-active-user-name">
+                            <div class="user-and-author">
+                                <div class="user-story">Vũ Minh Hiếu</div>
+                                <div class="time-story">3 giờ</div>
+                            </div>
+                            <div class="author">Son Tùng MTP</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-story">
+                    
+                </div>
+            </div>
+            <span class="btn btn-next">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+        </div>
+        <div class="app-right">
+            <div class="pq6dq46d">
+                <div class="kmdw4o4n flx89l3n" style="display: inline-block; line-height: 0; font-size: 0px;">
+                    <canvas width="39" height="39" style="width: 39px; height: 39px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src = './JS/story.js'></script>
+</body>
+</html>

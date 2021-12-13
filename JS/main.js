@@ -33,8 +33,7 @@ const container_right = $('.container-right');
 const list_story = $('.slider-review');
 const btnNext = $('.js-next-story');
 const itemStory = $('.js-item-story');
-const likebtn = $$('.js-like-status');
-const input__blog = $('#comment-status');
+const story_href = $$('.js-story');
 const apps = {
     currentIndex: 0,
     contact_list:[
@@ -110,6 +109,58 @@ const apps = {
             friend: '2',
             place: 'Hà Tĩnh'
         },
+    ],
+    Post__Blog: [
+            {
+             "name": "Patrick Rohan",
+             "avatar": "./assets/img/user.jpg",
+             "time": "Vừa xong",
+             "content": "Hello Hello Gello 😂😄",
+             "avatarPost": "./assets/img/20-10.jpg",
+             "numberLike": 85,
+             "numberCommen": "100 bình luận",
+             "id": "1"
+            },
+            {
+             "name": "Elvira Gerlach",
+             "avatar": "./assets/img/user4.jpg",
+             "time": "1 giờ",
+             "content": "Are you spending too much time searching for 3D models?  Are you paying too much for downloads?  Are you limited by storage space and the number of uploads?  Join Thangs where it's quick, free, and unlimited!",
+             "avatarPost": "./assets/img/user-12.jpg",
+             "numberLike": 50,
+             "numberCommen": "10 bình luận",
+             "id": "2"
+            },
+            {
+             "name": "Maryann Lesch",
+             "avatar": "./assets/img/user3.jpg",
+             "time": "2 giờ",
+             "content": "Are you spending too much time searching for 3D models?  Are you paying too much for downloads?  Are you limited by storage space and the number of uploads?  Join Thangs where it's quick, free, and unlimited",
+             "avatarPost": "./assets/img/user-10.jpg",
+             "numberLike": 8,
+             "numberCommen": "30 bình luận",
+             "id": "3"
+            },
+            {
+             "name": "Harold Walker",
+             "avatar": "./assets/img/user4.jpg",
+             "time": "3 giờ",
+             "content": "Are you spending too much time searching for 3D models?  Are you paying too much for downloads?  Are you limited by storage space and the number of uploads?  Join Thangs where it's quick, free, and unlimited",
+             "avatarPost": "./assets/img/user-8.jpg",
+             "numberLike": 77,
+             "numberCommen": "4 bình luận",
+             "id": "4"
+            },
+            {
+             "name": "Kelly Vandervort",
+             "avatar": "./assets/img/user4.jpg",
+             "time": "4 giờ",
+             "content": "Are you spending too much time searching for 3D models?  Are you paying too much for downloads?  Are you limited by storage space and the number of uploads?  Join Thangs where it's quick, free, and unlimited",
+             "avatarPost": "./assets/img/user-8.jpg",
+             "numberLike": 49,
+             "numberCommen": "5 bình luận",
+             "id": "5"
+            }
     ],
     list_story: [
         './assets/img/Dung.jpg',
@@ -208,8 +259,192 @@ const apps = {
         })
         list_contact.innerHTML = htmls.join('');
     },
+    GetApi : function(){
+        fetch('https://61b561e90e84b70017331af3.mockapi.io/API/Facebook/users')
+        .then((res)=>{
+            return res.json()
+        })
+        .then(this.RenderBlog)
+    },
+    StartGetAPI: function(){
+        this.GetApi(this.RenderBlog)
+        console.log(this.RenderBlog);
+    },
+    // Lấy dữ liệu để render
+    RenderBlog: function(Blog){
+        console.log(Blog)
+        const postBlog = $('.center-content-post')
+           const htmls = Blog.map(item=>{
+                return `
+                <div class="center-content-blog">
+                <div class="center-content-blog__header">
+                    <span class="center-content-blog__header-heading hover-hover">
+                        <img src="${item.avatar}" alt="">
+                    </span>
+                    <div class="center-content-blog__header-name">
+                        <div class="center-content-blog__header-name-user">
+                            <span class="user hover-underline">${item.name}</span>
+                        </div>
+                        <div class="center-content-blog__header-name-icon">
+                            <span class="time hover-underline">${item.time}</span>
+                            <span class="icon-user">
+                                <i class="fas fa-globe-americas"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="center-content-blog__header-icon hover">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                </div>
+                <div class="center-content-blog__paragrap">
+                    <p>${item.content}</p>
+                </div>
+                <div class="center-content-blog__img">
+                    <img src="${item.avatarPost}" alt="">
+                </div>
+                <div class="center-content-blog__like">
+                    <div class="center-content-blog__like-love">
+                        <span class="like-status">
+                            <i class="fas fa-thumbs-up"></i>
+                        </span>
+                        <span class="like-status love-status">
+                            <i class="fas fa-heart"></i>
+                        </span>
+                        <span class="number-like time hover-underline">${item.numberLike}</span>
+                    </div>
+                    <div class="center-content-blog__like-number-share">
+                        <span class="time hover-underline">${item.numberCommen}</span>
+                    </div>
+                </div>
+                <div class="center-content-blog__footer">
+                    <div class='icon-comment'>
+                        <div class="center-content-blog__footer-icon-like js-like-status hover">
+                            <span class="icon-like">
+                                <i class="far fa-thumbs-up"></i>
+                            </span>
+                            <span class="number-like">Like</span>
+                        </div>
+                        <div class="center-content-blog__footer-icon-like js-comment-status hover">
+                            <span class="icon-like">
+                                <i class="far fa-comment"></i>
+                            </span>
+                            <span class="number-like">Bình luận</span>
+                        </div>
+                        <div class="center-content-blog__footer-icon-like hover">
+                            <span class="icon-like">
+                                <i class="fas fa-share"></i>
+                            </span>
+                            <span class="number-like">Chia sẻ</span>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+                `;
+            });
+         postBlog.innerHTML = htmls.join('');
+    },
+    // Dùng mảng render
+    renderBlog1 : function(){
+        const postBlog = $('.center-content-post')
+        const htmls = this.Post__Blog.map(item=>{
+             return `
+        <div class="center-content-blog">
+             <div class="center-content-blog__header">
+                 <span class="center-content-blog__header-heading hover-hover">
+                     <img src="${item.avatar}" alt="">
+                 </span>
+                 <div class="center-content-blog__header-name">
+                     <div class="center-content-blog__header-name-user">
+                         <span class="user hover-underline">${item.name}</span>
+                     </div>
+                     <div class="center-content-blog__header-name-icon">
+                         <span class="time hover-underline">${item.time}</span>
+                         <span class="icon-user">
+                             <i class="fas fa-globe-americas"></i>
+                         </span>
+                     </div>
+                 </div>
+                 <div class="center-content-blog__header-icon hover">
+                     <i class="fas fa-ellipsis-h"></i>
+                 </div>
+             </div>
+             <div class="center-content-blog__paragrap">
+                 <p>${item.content}</p>
+             </div>
+             <div class="center-content-blog__img">
+                 <img src="${item.avatarPost}" alt="">
+             </div>
+             <div class="center-content-blog__like">
+                 <div class="center-content-blog__like-love">
+                     <span class="like-status">
+                         <i class="fas fa-thumbs-up"></i>
+                     </span>
+                     <span class="like-status love-status">
+                         <i class="fas fa-heart"></i>
+                     </span>
+                     <span class="number-like time hover-underline">${item.numberLike}</span>
+                 </div>
+                 <div class="center-content-blog__like-number-share">
+                     <span class="time hover-underline">${item.numberCommen}</span>
+                 </div>
+             </div>
+             <div class="center-content-blog__footer">
+                 <div class='icon-comment'>
+                     <div class="center-content-blog__footer-icon-like js-like-status hover">
+                         <span class="icon-like">
+                             <i class="far fa-thumbs-up"></i>
+                         </span>
+                         <span class="number-like">Like</span>
+                     </div>
+                     <div class="center-content-blog__footer-icon-like js-comment-status hover">
+                         <span class="icon-like">
+                             <i class="far fa-comment"></i>
+                         </span>
+                         <span class="number-like">Bình luận</span>
+                     </div>
+                     <div class="center-content-blog__footer-icon-like hover">
+                         <span class="icon-like">
+                             <i class="fas fa-share"></i>
+                         </span>
+                         <span class="number-like">Chia sẻ</span>
+                     </div>
+                 </div>
+             <div class="comment-block ">
+                 <div class="comment-block__header">
+                     <div class="comment-block__header-selection">
+                         <h3>Phù hợp nhất</h3>
+                         <i class=" fas fa-caret-down"></i>
+                     </div>
+                     <div class="comment-block__header-input">
+                         <span class="comment-block__header-user">
+                             <img src="./assets/img/user.jpg" alt="">
+                         </span>
+                         <div class="comment-block__header-input-ct">
+                             <input class='input'type="text" name="" id="comment-status" placeholder="Viết bình luận...">
+                             <div class="conmment-block__header-list-icon">
+                                 <i class="far fa-meh-rolling-eyes"></i>
+                                 <i class=" far fa-smile"></i>
+                                 <i class="fas fa-camera-retro"></i>
+                                 <i class="fab fa-git-square"></i>
+                                 <i class="fas fa-atom"></i>
+                             </div>
+                         </div>
+                     </div>
+                     </div>
+                     <div class="comment-block__content" >
+                                                                      
+                     </div>
+                </div>
+             </div>
+         </div>
+             `;
+         });
+      postBlog.innerHTML = htmls.join('');
+    },
     CreatElemt: function(){
-
+        const check = $('.js-like-status')
+        console.log(check)
     },
     handleEvent: function(){
         const _this = this;
@@ -221,6 +456,12 @@ const apps = {
             $('.modal').style.display = 'none';
             $('.open-close-messenger_footer').style.display = 'block';
         }
+        // Xử lý khi click vào story hiện sang trang mới
+        story_href.forEach(element=>{
+            element.onclick = () =>{
+                element.href = './story.html'
+            }
+        })
         // Xử lý đăng bài viết
         var inputBlog;
         status_input.oninput = function(e){
@@ -289,13 +530,14 @@ const apps = {
             const scrollTop = this.scrollHeight;
             console.log(scrollTop);
         }
+        const likebtn = $$(".js-like-status");
+        console.log(likebtn)
         likebtn.forEach(function(item){
             item.onclick = function(){
                 this.classList.toggle('active');
                 const check = this.classList.contains('active');
                 const par = this.parentNode.parentNode.parentNode;
                 const par3 = par.querySelector('.number-like');
-                console.log(par3);
                 const numberLike = Number(par3.textContent) ;
                 if(check){
                     par3.textContent = numberLike + 1;
@@ -305,20 +547,17 @@ const apps = {
                 }
             }
         })
-        // Xử lý comment bài viết
-        var inputValue;
-        input__blog.oninput = function(e){
-            inputValue = e.target.value;
-            _this.showValue(inputValue)
-        }
-        const comment = $('.js-comment-status');
-        const comment_block = $('.comment-block');
-        comment.onclick = function(){
-           comment_block.classList.add('open');
-           input__blog.focus();
-              
-        }
-       //
+       // Xử lý comment bài viết
+        const comment = $$('.js-comment-status');
+        comment.forEach(element=>{
+            element.onclick = function(){
+                const comment_block = this.parentNode.parentNode.querySelector('.comment-block');
+                const input__blog = this.parentNode.parentNode.querySelector('#comment-status')
+                comment_block.classList.add('open');
+                input__blog.focus();
+                _this.getValueInput(input__blog)
+            }
+        })
        let dem = 0;
        const img = $('.js-user-story');
        const img1 = $('.js-user-story-1');
@@ -340,38 +579,53 @@ const apps = {
         btnNext.click();
     },5000);
        },
-    showValue: function(input){
-        input__blog.onkeydown = function(e){
+    getValueInput: function(element){
+        _this = this;
+        var inputValue;
+        element.onkeydown = function(e){
+            switch(e.which){
+                case 13: {
+                    inputValue = element.value;
+                    const fromData = {
+                        inputValue: inputValue
+                    }
+                    console.log(fromData)
+                }
+                e.target.value = '';
+            }
+            // _this.showValue(element,inputValue);
+        }
+    },
+    showValue: function(element,input){
+        element.onkeydown = function(e){
             switch(e.which){
                 case 13:{
-                    const comment_block__content = $('.comment-block__content');
-                    const inputCmt = document.createElement('div');
-                    inputCmt.innerHTML = `
-                    <div class="comment-user-content" style="display: flex;">
-                    <span class="comment-block__content-user">
-                        <img src="./assets/img/user.jpg" alt="">
-                    </span>
-                    <div class="comment-content">
-                        <div class="comment-content__heading">
-                            <span class="user">Trường Nguyễn</span>
-                            <p>${input}</p>
-                            <span class="comment-content__heading-selction hover">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </span>
-                        </div>
-                     </div>
-                </div>
-                 <div class="comment-content__body">
-                      <div class="comment-content__body-interact" style="margin-left: 40px;">
-                          <span>Thích</span> 
-                          <span>Phản hồi</span>
-                         <span class="time">Vừa Xong</span>
-                      </div>
+                const comment_blog = element.parentNode.parentNode.parentNode.parentNode.querySelector('.comment-block__content')
+                comment_blog.innerHTML = 
+                `
+                <div class="comment-user-content" style="display: flex;">
+                <span class="comment-block__content-user">
+                    <img src="./assets/img/user.jpg" alt="">
+                </span>
+                <div class="comment-content">
+                    <div class="comment-content__heading">
+                        <span class="user">Trường Nguyễn</span>
+                        <p>${input}</p>
+                        <span class="comment-content__heading-selction hover">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </span>
+                    </div>
                  </div>
-                    `;
-                comment_block__content.appendChild(inputCmt);
+            </div>
+             <div class="comment-content__body">
+                  <div class="comment-content__body-interact" style="margin-left: 40px;">
+                      <span>Thích</span> 
+                      <span>Phản hồi</span>
+                     <span class="time">Vừa Xong</span>
+                  </div>
+             </div>
+                `
                 e.target.value = '';
-               
                 }
             }
         }
@@ -449,8 +703,11 @@ const apps = {
         }
     },
     start: function(){
-        this.handleEvent();
+        this.StartGetAPI(); // Chạy việc dùng API để lấy dữ liệu render
+        // this.renderBlog1(); // CHạy mảng để render
         this.renderListContact();
+        this.handleEvent();
+        // this.CreatElemt();
     }
 }
 apps.start();
