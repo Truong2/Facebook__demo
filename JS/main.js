@@ -259,12 +259,12 @@ const apps = {
         })
         list_contact.innerHTML = htmls.join('');
     },
-    GetApi : function(){
+    GetApi : function(callback){
         fetch('https://61b561e90e84b70017331af3.mockapi.io/API/Facebook/users')
         .then((res)=>{
             return res.json()
         })
-        .then(this.RenderBlog)
+        .then(callback)
     },
     StartGetAPI: function(){
         this.GetApi(this.RenderBlog)
